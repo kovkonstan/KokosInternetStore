@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KokosInternetStore", "KokosInternetStore.csproj", "{BEE6DEC7-DE05-4B83-98A8-BD720D332421}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kokos_Utility", "..\Kokos_Utility\Kokos_Utility.csproj", "{EAD7A1AB-BFDD-4431-B8BE-95C3C262A57F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kokos_Models", "..\Kokos_Models\Kokos_Models.csproj", "{5CADC132-A87F-4F97-81E3-E184E6608135}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kokos_DataAccess", "..\Kokos_DataAccess\Kokos_DataAccess.csproj", "{7CE108BA-766F-422A-A061-77FE37ADA0EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEE6DEC7-DE05-4B83-98A8-BD720D332421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE6DEC7-DE05-4B83-98A8-BD720D332421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE6DEC7-DE05-4B83-98A8-BD720D332421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE6DEC7-DE05-4B83-98A8-BD720D332421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD7A1AB-BFDD-4431-B8BE-95C3C262A57F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD7A1AB-BFDD-4431-B8BE-95C3C262A57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD7A1AB-BFDD-4431-B8BE-95C3C262A57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD7A1AB-BFDD-4431-B8BE-95C3C262A57F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CADC132-A87F-4F97-81E3-E184E6608135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CADC132-A87F-4F97-81E3-E184E6608135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CADC132-A87F-4F97-81E3-E184E6608135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CADC132-A87F-4F97-81E3-E184E6608135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CE108BA-766F-422A-A061-77FE37ADA0EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CE108BA-766F-422A-A061-77FE37ADA0EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CE108BA-766F-422A-A061-77FE37ADA0EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CE108BA-766F-422A-A061-77FE37ADA0EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {816CC3E9-319F-4069-B845-830A2B7E5A98}
+	EndGlobalSection
+EndGlobal
