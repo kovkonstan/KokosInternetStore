@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bfC6xFy7L1yBolXF9Bq8W8DwJZwRpNcWYBKcQXFiNJ55CbK3FSd1esdFDff8HqK/equyws9wWhQ4nps4wIslng==",
+  "dgSpecHash": "wN+AlMicjjtUbOriJt4LbWqotIo60iIcbF+siSiyk7PBesSnjpHchycqeiI4V0XhQYITzZKq7ld1/o60ivbMQQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\Kokos_Models.csproj",
+  "projectFilePath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

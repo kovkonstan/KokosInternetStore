@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2040VL3aX0K8a2tR1KgIDssqjTfAUzIvL9PrWZFD4+3lhrH0/l3vSIYtClLDBAsqITy95jsRHHkwXwVvctLB6A==",
+  "dgSpecHash": "tn2fwgco6FI/CF7dTDY8QOrq6JJ9MdH67jIIVSwxV/L2+LSljGlqDg95yhOwLvarR8pmGeEXOnmPnWsxDKf3Qg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Администратор\\source\\repos\\Kokos_DataAccess\\Kokos_DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_DataAccess\\Kokos_DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

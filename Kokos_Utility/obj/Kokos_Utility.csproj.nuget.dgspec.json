@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\Kokos_Utility.csproj": {}
+    "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\Kokos_Utility.csproj": {
+    "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\Kokos_Utility.csproj",
+        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj",
         "projectName": "Kokos_Utility",
-        "projectPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\Kokos_Utility.csproj",
+        "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj",
         "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\obj\\",
+        "outputPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

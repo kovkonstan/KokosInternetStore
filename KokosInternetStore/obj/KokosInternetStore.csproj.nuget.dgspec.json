@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\KokosInternetStore.csproj": {}
+    "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\KokosInternetStore\\KokosInternetStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\KokosInternetStore.csproj": {
+    "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\KokosInternetStore\\KokosInternetStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\KokosInternetStore.csproj",
+        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\KokosInternetStore\\KokosInternetStore.csproj",
         "projectName": "KokosInternetStore",
-        "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\KokosInternetStore.csproj",
+        "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\KokosInternetStore\\KokosInternetStore.csproj",
         "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\obj\\",
+        "outputPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\KokosInternetStore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,14 +31,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Администратор\\source\\repos\\Kokos_DataAccess\\Kokos_DataAccess.csproj": {
-                "projectPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_DataAccess\\Kokos_DataAccess.csproj"
+              "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_DataAccess\\Kokos_DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_DataAccess\\Kokos_DataAccess.csproj"
               },
-              "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\Kokos_Models.csproj": {
-                "projectPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\Kokos_Models.csproj"
+              "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj": {
+                "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj"
               },
-              "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\Kokos_Utility.csproj": {
-                "projectPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\Kokos_Utility.csproj"
+              "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj": {
+                "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj"
               }
             }
           }
@@ -106,14 +106,14 @@
         }
       }
     },
-    "C:\\Users\\Администратор\\source\\repos\\Kokos_DataAccess\\Kokos_DataAccess.csproj": {
+    "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_DataAccess\\Kokos_DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\Kokos_DataAccess\\Kokos_DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_DataAccess\\Kokos_DataAccess.csproj",
         "projectName": "Kokos_DataAccess",
-        "projectPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_DataAccess\\Kokos_DataAccess.csproj",
+        "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_DataAccess\\Kokos_DataAccess.csproj",
         "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -133,8 +133,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\Kokos_Models.csproj": {
-                "projectPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\Kokos_Models.csproj"
+              "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj": {
+                "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj"
               }
             }
           }
@@ -181,14 +181,14 @@
         }
       }
     },
-    "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\Kokos_Models.csproj": {
+    "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\Kokos_Models.csproj",
+        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj",
         "projectName": "Kokos_Models",
-        "projectPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\Kokos_Models.csproj",
+        "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj",
         "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\obj\\",
+        "outputPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -248,14 +248,14 @@
         }
       }
     },
-    "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\Kokos_Utility.csproj": {
+    "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\Kokos_Utility.csproj",
+        "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj",
         "projectName": "Kokos_Utility",
-        "projectPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\Kokos_Utility.csproj",
+        "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj",
         "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Utility\\obj\\",
+        "outputPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

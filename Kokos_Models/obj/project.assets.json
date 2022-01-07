@@ -6459,11 +6459,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\Kokos_Models.csproj",
+      "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj",
       "projectName": "Kokos_Models",
-      "projectPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\Kokos_Models.csproj",
+      "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj",
       "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Администратор\\source\\repos\\Kokos_Models\\obj\\",
+      "outputPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
