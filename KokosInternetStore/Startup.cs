@@ -1,4 +1,6 @@
 using Kokos_DataAccess.Data;
+using Kokos_DataAccess.Repository;
+using Kokos_DataAccess.Repository.IRepository;
 using Kokos_Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,6 +43,8 @@ namespace KokosInternetStore
                 options.Cookie.HttpOnly = true; // 
                 options.Cookie.IsEssential = true;
             });
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+
             services.AddControllersWithViews();
         }
 

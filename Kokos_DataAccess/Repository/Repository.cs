@@ -82,7 +82,7 @@ namespace Kokos_DataAccess.Repository
             dbSet.Remove(entity);
         }
 
-        public void Save(T entity)
+        public void Save()
         {
             _db.SaveChanges();
         }

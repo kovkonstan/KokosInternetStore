@@ -63,7 +63,6 @@ namespace Kokos_DataAccess.Repository.IRepository
         /// <summary>
         /// Сохранить изменения в БД
         /// </summary>
-        /// <param name="entity"></param>
-        void Save(T entity);
+        void Save();
     }
 }

@@ -7,21 +7,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Kokos_DataAccess.Data;
+using Kokos_DataAccess.Repository.IRepository;
 
 namespace KokosInternetStore.Controllers
 {
     [Authorize(Roles = WebConstants.AdminRole)]
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly ICategoryRepository _catRepo;
 
-        public CategoryController(ApplicationDbContext db)
+        public CategoryController(ICategoryRepository catRepo)
         {
-            _db = db;
+            _catRepo = catRepo;
         }
         public IActionResult Index()
         {
-            IEnumerable<Category> objList = _db.Category;
+            IEnumerable<Category> objList = _catRepo.GetAll();
             return View(objList);
         }
 
@@ -38,8 +39,8 @@ namespace KokosInternetStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Category.Add(obj);
-                _db.SaveChanges();
+                _catRepo.Add(obj);
+                _catRepo.Save();
                 return RedirectToAction("Index");
             }            
             return View(obj);
@@ -53,7 +54,7 @@ namespace KokosInternetStore.Controllers
                 return NotFound();
             }
 
-            var obj = _db.Category.Find(id);
+            var obj = _catRepo.Find(id.GetValueOrDefault());
             if (obj == null)
             {
                 return NotFound();
@@ -69,8 +70,8 @@ namespace KokosInternetStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Category.Update(obj);
-                _db.SaveChanges();
+                _catRepo.Update(obj);
+                _catRepo.Save();
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -84,7 +85,7 @@ namespace KokosInternetStore.Controllers
                 return NotFound();
             }
 
-            var obj = _db.Category.Find(id);
+            var obj = _catRepo.Find(id.GetValueOrDefault());
             if (obj == null)
             {
                 return NotFound();
@@ -98,14 +99,14 @@ namespace KokosInternetStore.Controllers
         [ValidateAntiForgeryToken] // Защита от взлома
         public IActionResult DeletePost(int? id)
         {
-            var obj = _db.Category.Find(id);
+            var obj = _catRepo.Find(id.GetValueOrDefault());
             if (obj == null)
             {
                 return NotFound();
             }
-            
-            _db.Category.Remove(obj);
-            _db.SaveChanges();
+
+            _catRepo.Remove(obj);
+            _catRepo.Save();
             return RedirectToAction("Index");
         }
     }
