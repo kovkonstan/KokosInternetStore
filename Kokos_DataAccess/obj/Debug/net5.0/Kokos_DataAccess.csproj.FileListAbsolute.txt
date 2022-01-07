@@ -1,0 +1,15 @@
+C:\Users\Администратор\source\repos\Kokos_DataAccess\obj\Debug\net5.0\Kokos_DataAccess.csproj.AssemblyReference.cache
+C:\Users\Администратор\source\repos\Kokos_DataAccess\obj\Debug\net5.0\Kokos_DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Администратор\source\repos\Kokos_DataAccess\obj\Debug\net5.0\Kokos_DataAccess.AssemblyInfoInputs.cache
+C:\Users\Администратор\source\repos\Kokos_DataAccess\obj\Debug\net5.0\Kokos_DataAccess.AssemblyInfo.cs
+C:\Users\Администратор\source\repos\Kokos_DataAccess\obj\Debug\net5.0\Kokos_DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Администратор\source\repos\Kokos_DataAccess\bin\Debug\net5.0\Kokos_DataAccess.deps.json
+C:\Users\Администратор\source\repos\Kokos_DataAccess\bin\Debug\net5.0\Kokos_DataAccess.dll
+C:\Users\Администратор\source\repos\Kokos_DataAccess\bin\Debug\net5.0\ref\Kokos_DataAccess.dll
+C:\Users\Администратор\source\repos\Kokos_DataAccess\bin\Debug\net5.0\Kokos_DataAccess.pdb
+C:\Users\Администратор\source\repos\Kokos_DataAccess\bin\Debug\net5.0\Kokos_Models.dll
+C:\Users\Администратор\source\repos\Kokos_DataAccess\bin\Debug\net5.0\Kokos_Models.pdb
+C:\Users\Администратор\source\repos\Kokos_DataAccess\obj\Debug\net5.0\Kokos_DataAccess.csproj.CopyComplete
+C:\Users\Администратор\source\repos\Kokos_DataAccess\obj\Debug\net5.0\Kokos_DataAccess.dll
+C:\Users\Администратор\source\repos\Kokos_DataAccess\obj\Debug\net5.0\ref\Kokos_DataAccess.dll
+C:\Users\Администратор\source\repos\Kokos_DataAccess\obj\Debug\net5.0\Kokos_DataAccess.pdb
