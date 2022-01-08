@@ -12,23 +12,24 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Kokos_DataAccess.Data;
+using Kokos_DataAccess.Repository.IRepository;
 
 namespace KokosInternetStore.Controllers
 {
     [Authorize(Roles = WebConstants.AdminRole)]
     public class ProductController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly IProductRepository _prodRepo;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
+        public ProductController(IProductRepository prodRepo, IWebHostEnvironment webHostEnvironment)
         {
-            _db = db;
+            _prodRepo = prodRepo;
             _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
-            IEnumerable<Product> objList = _db.Product.Include(u => u.Category).Include(u => u.ApplicationType);
+            IEnumerable<Product> objList = _prodRepo.GetAll(includeProperties: String.Format("{0},{1}", nameof(Category), nameof(ApplicationType)));
 
             return View(objList);
         }
@@ -39,16 +40,8 @@ namespace KokosInternetStore.Controllers
             ProductVM productVM = new ProductVM()
             {
                 Product = new Product(),
-                CategorySelectList = _db.Category.Select(i => new SelectListItem
-                {
-                    Text = i.Name,
-                    Value = i.Id.ToString()
-                }),
-                ApplicationTypeSelectList = _db.ApplicationType.Select(i => new SelectListItem
-                {
-                    Text = i.Name,
-                    Value = i.Id.ToString()
-                })
+                CategorySelectList = _prodRepo.GetAllDropdownList(WebConstants.CategoryName),
+                ApplicationTypeSelectList = _prodRepo.GetAllDropdownList(WebConstants.ApplicationTypeName)
             };
 
             if (id == null)
@@ -58,7 +51,7 @@ namespace KokosInternetStore.Controllers
             }
             else
             {
-                productVM.Product = _db.Product.Find(id);
+                productVM.Product = _prodRepo.Find(id.GetValueOrDefault());
                 if (productVM.Product == null)
                 {
                     return NotFound();
@@ -91,12 +84,12 @@ namespace KokosInternetStore.Controllers
 
                     productVM.Product.Image = fileName + extension;
 
-                    _db.Product.Add(productVM.Product);                    
+                    _prodRepo.Add(productVM.Product);                    
                 }
                 else
                 {
                     // Обновление сущности
-                    var objFromDb = _db.Product.AsNoTracking().FirstOrDefault(u => u.Id == productVM.Product.Id);
+                    var objFromDb = _prodRepo.FirstOrDefault(u => u.Id == productVM.Product.Id, isTracking:false);
 
                     if (files.Count > 0)
                     {
@@ -121,23 +114,15 @@ namespace KokosInternetStore.Controllers
                     {
                         productVM.Product.Image = objFromDb.Image;
                     }
-                    _db.Product.Update(productVM.Product);
+                    _prodRepo.Update(productVM.Product);
                 }
 
-                _db.SaveChanges();
+                _prodRepo.Save();
                 return RedirectToAction("Index");
             }
 
-            productVM.CategorySelectList = _db.Category.Select(i => new SelectListItem
-            {
-                Text = i.Name,
-                Value = i.Id.ToString()
-            });
-            productVM.ApplicationTypeSelectList = _db.ApplicationType.Select(i => new SelectListItem
-            {
-                Text = i.Name,
-                Value = i.Id.ToString()
-            });
+            productVM.CategorySelectList = _prodRepo.GetAllDropdownList(WebConstants.CategoryName);
+            productVM.CategorySelectList = _prodRepo.GetAllDropdownList(WebConstants.ApplicationTypeName);
             return View(productVM);
         }
         
@@ -150,7 +135,8 @@ namespace KokosInternetStore.Controllers
             }
 
             // Eager loading - жадная загрузка
-            Product product = _db.Product.Include(u => u.Category).Include(u => u.ApplicationType).FirstOrDefault(u => u.Id == id);
+            Product product = _prodRepo.FirstOrDefault(u => u.Id == id, 
+                includeProperties: String.Format("{0},{1}", WebConstants.CategoryName, WebConstants.ApplicationTypeName));
 
             if (product == null)
             {
@@ -165,7 +151,7 @@ namespace KokosInternetStore.Controllers
         [ValidateAntiForgeryToken] // Защита от взлома
         public IActionResult DeletePost(int? id)
         {
-            var obj = _db.Product.Find(id);
+            var obj = _prodRepo.Find(id.GetValueOrDefault());
             if (obj == null)
             {
                 return NotFound();
@@ -179,8 +165,8 @@ namespace KokosInternetStore.Controllers
                 System.IO.File.Delete(oldFile);
             }
 
-            _db.Product.Remove(obj);
-            _db.SaveChanges();            
+            _prodRepo.Remove(obj);
+            _prodRepo.Save();            
 
             return RedirectToAction("Index");
         }

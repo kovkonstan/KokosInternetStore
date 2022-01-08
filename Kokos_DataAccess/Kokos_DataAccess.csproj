@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kokos_Models\Kokos_Models.csproj" />
+    <ProjectReference Include="..\Kokos_Utility\Kokos_Utility.csproj" />
   </ItemGroup>
 
 </Project>

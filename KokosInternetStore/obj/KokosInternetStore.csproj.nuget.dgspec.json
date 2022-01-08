@@ -135,6 +135,9 @@
             "projectReferences": {
               "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj": {
                 "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Models\\Kokos_Models.csproj"
+              },
+              "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj": {
+                "projectPath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\Kokos_Utility\\Kokos_Utility.csproj"
               }
             }
           }
