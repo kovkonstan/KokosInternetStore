@@ -1000,3 +1000,6 @@ C:\Users\Администратор\source\repos\KokosInternetStore\KokosInterne
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\ref\KokosInternetStore.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\KokosInternetStore.pdb
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\KokosInternetStore.genruntimeconfig.cache
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Inquiry\Index.cshtml.g.cs
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Inquiry\Details.cshtml.g.cs
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Shared\_Notifications.cshtml.g.cs

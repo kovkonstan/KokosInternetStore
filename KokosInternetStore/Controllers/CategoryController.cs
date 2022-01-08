@@ -41,8 +41,10 @@ namespace KokosInternetStore.Controllers
             {
                 _catRepo.Add(obj);
                 _catRepo.Save();
+                TempData[WebConstants.Success] = "Новая категория успешно создана";
                 return RedirectToAction("Index");
-            }            
+            }
+            TempData[WebConstants.Error] = "Ошибка при создании категории";
             return View(obj);
         }
 

@@ -1,4 +1,5 @@
 ﻿using Kokos_DataAccess.Data;
+using Kokos_DataAccess.Repository.IRepository;
 using Kokos_Models;
 using Kokos_Models.ViewModels;
 using Kokos_Utility;
@@ -16,11 +17,13 @@ namespace KokosInternetStore.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _db; 
+        private readonly IProductRepository _prodRepo;
+        private readonly ICategoryRepository _catRepo;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
+        public HomeController(ILogger<HomeController> logger, IProductRepository prodRepo, ICategoryRepository catRepo)
         {
-            _db = db;        
+            _prodRepo = prodRepo;
+            _catRepo = catRepo;
             _logger = logger;
         }
 
@@ -28,10 +31,8 @@ namespace KokosInternetStore.Controllers
         {
             HomeVM homeVM = new HomeVM()
             {
-                Products = _db.Product
-                    .Include(u => u.Category)
-                    .Include(u => u.ApplicationType),
-                Categories = _db.Category
+                Products = _prodRepo.GetAll(includeProperties: String.Format("{0},{1}", nameof(Category), nameof(ApplicationType))),                    
+                Categories = _catRepo.GetAll()
             };
             return View(homeVM);
         }
@@ -58,8 +59,8 @@ namespace KokosInternetStore.Controllers
 
             DetailsVM detailsVM = new DetailsVM()
             {
-                Product = _db.Product.Include(u => u.Category).Include(u => u.ApplicationType)
-                    .FirstOrDefault(u => u.Id == id),
+                Product = _prodRepo.FirstOrDefault(u => u.Id == id, 
+                    includeProperties: String.Format("{0},{1}", nameof(Category), nameof(ApplicationType))),                    
                 ExistInCart = false
             };
 

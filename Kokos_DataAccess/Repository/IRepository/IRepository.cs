@@ -61,6 +61,12 @@ namespace Kokos_DataAccess.Repository.IRepository
         void Remove(T entity);
 
         /// <summary>
+        /// Удалить несколько экземпляров сущности из БД 
+        /// </summary>
+        /// <param name="entity"></param>
+        void RemoveRange(IEnumerable<T> entities);
+
+        /// <summary>
         /// Сохранить изменения в БД
         /// </summary>
         void Save();
