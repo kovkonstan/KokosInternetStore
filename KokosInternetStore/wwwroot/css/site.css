@@ -238,3 +238,23 @@ body {
     width: 210px !important;
     margin: 0 auto;
 }
+
+#toast-container > .toast {
+    background-color: #030303 !important;
+}
+
+#toast-container > .toast-success {
+    background-color: #51A351 !important;
+}
+
+#toast-container > .toast-error {
+    background-color: #BD362F !important;
+}
+
+#toast-container > .toast-info {
+    background-color: #2F96B4 !important;
+}
+
+#toast-container > .toast-warning {
+    background-color: #F89406 !important;
+}
