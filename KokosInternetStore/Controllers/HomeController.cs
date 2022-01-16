@@ -76,8 +76,9 @@ namespace KokosInternetStore.Controllers
             return View(detailsVM);
         }
 
+        // Добавление товара в корзину
         [HttpPost, ActionName("Details")]
-        public IActionResult DetailsPost(int id)
+        public IActionResult DetailsPost(int id, DetailsVM detailsVM)
         {
             List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
             if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart) != null
@@ -86,9 +87,10 @@ namespace KokosInternetStore.Controllers
                 shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WebConstants.SessionCart);
             }
 
-            shoppingCartList.Add(new ShoppingCart { ProductId = id });
+            shoppingCartList.Add(new ShoppingCart { ProductId = id, Quantity = detailsVM.Product.TempQuantity});
             HttpContext.Session.Set(WebConstants.SessionCart, shoppingCartList);
 
+            TempData[WebConstants.Success] = "Товар добавлен в корзину";
             return RedirectToAction(nameof(Index));
         }
 
@@ -110,6 +112,7 @@ namespace KokosInternetStore.Controllers
             }
 
             HttpContext.Session.Set(WebConstants.SessionCart, shoppingCartList);
+            TempData[WebConstants.Success] = "Товар удален из корзины";
 
             return RedirectToAction(nameof(Index));
         }

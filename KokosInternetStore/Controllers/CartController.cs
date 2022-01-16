@@ -56,7 +56,15 @@ namespace KokosInternetStore.Controllers
             }
 
             List<int> prodInCart = ShoppingCartList.Select(i => i.ProductId).ToList();
-            IEnumerable<Product> prodList = _prodRepo.GetAll(u => prodInCart.Contains(u.Id));
+            IEnumerable<Product> prodListTemp = _prodRepo.GetAll(u => prodInCart.Contains(u.Id));
+            IList<Product> prodList = new List<Product>();
+
+            foreach (var cartObj in ShoppingCartList)
+            {
+                Product prodTemp = prodListTemp.FirstOrDefault(u => u.Id == cartObj.ProductId);
+                prodTemp.TempQuantity = cartObj.Quantity;
+                prodList.Add(prodTemp);
+            }
  
             return View(prodList);
         }
@@ -150,6 +158,7 @@ namespace KokosInternetStore.Controllers
                 _inqDRepo.Add(inquiryDetail);
             }
             _inqDRepo.Save();
+            TempData[WebConstants.Success] = "Заказ успешно создан";
 
             return RedirectToAction(nameof(InquiryConfirmation));
         }
@@ -173,6 +182,7 @@ namespace KokosInternetStore.Controllers
 
             ShoppingCartList.Remove(ShoppingCartList.FirstOrDefault(u => u.ProductId == id));
             HttpContext.Session.Set(WebConstants.SessionCart, ShoppingCartList);
+            TempData[WebConstants.Success] = "Товар удален из корзины";
 
             return RedirectToAction(nameof(Index));
         }

@@ -9,6 +9,11 @@ namespace Kokos_Models
 {
     public class Product
     {
+        public Product()
+        {
+            TempQuantity = 1;
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -38,6 +43,10 @@ namespace Kokos_Models
 
         [ForeignKey("ApplicationTypeId")]
         public virtual ApplicationType ApplicationType { get; set; }
+
+        [NotMapped]
+        [Range (1,10000)]
+        public int TempQuantity { get; set; }
 
     }
 }

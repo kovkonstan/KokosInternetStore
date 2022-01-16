@@ -42,9 +42,10 @@ namespace KokosInternetStore.Controllers
             {
                 _appTypeRepo.Add(obj);
                 _appTypeRepo.Save();
+                TempData[WebConstants.Success] = "Тип приложения успешно создан";
                 return RedirectToAction("Index");
             }
-
+            TempData[WebConstants.Error] = "Ошибка при удалении типа приложения";
             return View(obj);
         }
 
@@ -74,8 +75,10 @@ namespace KokosInternetStore.Controllers
             {
                 _appTypeRepo.Update(obj);
                 _appTypeRepo.Save();
+                TempData[WebConstants.Success] = "Тип приложения успешно изменен";
                 return RedirectToAction("Index");
             }
+            TempData[WebConstants.Error] = "Ошибка при изменении типа приложения";
             return View(obj);
         }
 
@@ -109,6 +112,7 @@ namespace KokosInternetStore.Controllers
 
             _appTypeRepo.Remove(obj);
             _appTypeRepo.Save();
+            TempData[WebConstants.Success] = "Тип приложения успешно удален";
             return RedirectToAction("Index");
         }
     }

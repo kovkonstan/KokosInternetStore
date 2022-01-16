@@ -118,11 +118,13 @@ namespace KokosInternetStore.Controllers
                 }
 
                 _prodRepo.Save();
+                TempData[WebConstants.Success] = "Товар изменен успешно";
                 return RedirectToAction("Index");
             }
 
             productVM.CategorySelectList = _prodRepo.GetAllDropdownList(WebConstants.CategoryName);
             productVM.CategorySelectList = _prodRepo.GetAllDropdownList(WebConstants.ApplicationTypeName);
+            TempData[WebConstants.Error] = "Ошибка при изменении товара";
             return View(productVM);
         }
         
@@ -166,7 +168,8 @@ namespace KokosInternetStore.Controllers
             }
 
             _prodRepo.Remove(obj);
-            _prodRepo.Save();            
+            _prodRepo.Save();
+            TempData[WebConstants.Success] = "Товар успешно удален";
 
             return RedirectToAction("Index");
         }

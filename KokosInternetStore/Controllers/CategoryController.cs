@@ -74,8 +74,10 @@ namespace KokosInternetStore.Controllers
             {
                 _catRepo.Update(obj);
                 _catRepo.Save();
+                TempData[WebConstants.Success] = "Категория успешно изменена";
                 return RedirectToAction("Index");
             }
+            TempData[WebConstants.Error] = "Ошибка при изменении категории";
             return View(obj);
         }
 
@@ -109,6 +111,7 @@ namespace KokosInternetStore.Controllers
 
             _catRepo.Remove(obj);
             _catRepo.Save();
+            TempData[WebConstants.Success] = "Категория успешно удалена";
             return RedirectToAction("Index");
         }
     }

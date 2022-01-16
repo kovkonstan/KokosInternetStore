@@ -63,6 +63,8 @@ namespace KokosInternetStore.Controllers
             HttpContext.Session.Clear();
             HttpContext.Session.Set(WebConstants.SessionCart, shoppingCartList);
             HttpContext.Session.Set(WebConstants.SessionInquiryId, InquiryVM.InquiryHeader.Id);
+            TempData[WebConstants.Success] = "Товары успешно переданы в корзину";
+
             return RedirectToAction("Index", "Cart");
         }
 
@@ -77,10 +79,12 @@ namespace KokosInternetStore.Controllers
             _inqHRepo.Remove(inquiryHeader);
             _inqHRepo.Save();
 
+            TempData[WebConstants.Success] = "Заказ успешно удален";
             return RedirectToAction(nameof(Index));
         }
 
         #region API CALLS
+        // Используется в работе компонентом DataTables на странице Index для отображения запросов  
         [HttpGet]
         public IActionResult GetInquiryList()
         {
