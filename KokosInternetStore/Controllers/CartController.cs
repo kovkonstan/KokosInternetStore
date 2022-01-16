@@ -34,7 +34,7 @@ namespace KokosInternetStore.Controllers
             IApplicationUserRepository userRepo,
             IInquiryHeaderRepository inqHRepo,
             IInquiryDetailRepository inqDRepo,
-            IWebHostEnvironment webHostEnvironment, 
+            IWebHostEnvironment webHostEnvironment,
             IEmailSender emailSender)
         {
             _emailSender = emailSender;
@@ -65,29 +65,66 @@ namespace KokosInternetStore.Controllers
                 prodTemp.TempQuantity = cartObj.Quantity;
                 prodList.Add(prodTemp);
             }
- 
+
             return View(prodList);
         }
 
+        // Вызывается при нажатии на кнопку Продолжить в Корзине
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Index")]
-        public IActionResult IndexPost()
+        public IActionResult IndexPost(IEnumerable<Product> prodList)
         {
+            List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
+            foreach (Product prod in prodList)
+            {
+                shoppingCartList.Add(new ShoppingCart { ProductId = prod.Id, Quantity = prod.TempQuantity });
+            }
+
+            HttpContext.Session.Set(WebConstants.SessionCart, shoppingCartList);
+            
             return RedirectToAction(nameof(Summary));
         }
 
         public IActionResult Summary()
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier); // Первый способ получения идегнтификатора пользователя
-            // var userId = User.FindFirstValue(ClaimTypes.Name); // Второй способ
+            ApplicationUser applicationUser;
 
-            List<ShoppingCart> ShoppingCartList = new List<ShoppingCart>();
+            if (User.IsInRole(WebConstants.AdminRole))
+            {
+                if (HttpContext.Session.Get<int>(WebConstants.SessionInquiryId) != 0)
+                {
+                    // корзина была загружена на основании запроса
+                    InquiryHeader inquiryHeader = _inqHRepo.FirstOrDefault(u => u.Id ==
+                        HttpContext.Session.Get<int>(WebConstants.SessionInquiryId));
+                    applicationUser = new ApplicationUser()
+                    {
+                        Email = inquiryHeader.Email,
+                        FullName = inquiryHeader.FullName,
+                        PhoneNumber = inquiryHeader.PhoneNumber
+                    };
+                }
+                else
+                {
+                    applicationUser = new ApplicationUser();
+                }
+            }
+            else
+            {
+                var claimsIdentity = (ClaimsIdentity)User.Identity;
+                // Первый способ получения идентификатора пользователя
+                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                // var userId = User.FindFirstValue(ClaimTypes.Name); // Второй способ
+
+                applicationUser = _userRepo.FirstOrDefault(u => u.Id == claim.Value);
+            }
+
+            List<ShoppingCart> ShoppingCartList = new();
 
             if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart) != null
                 && HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WebConstants.SessionCart).Count() > 0)
             {
+                // сессия существует
                 ShoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WebConstants.SessionCart);
             }
 
@@ -96,9 +133,15 @@ namespace KokosInternetStore.Controllers
 
             ProductUserVM = new ProductUserVM()
             {
-                ApplicationUser = _userRepo.FirstOrDefault(u => u.Id == claim.Value),
-                ProductList = prodList.ToList()
+                ApplicationUser = applicationUser                
             };
+
+            foreach (var cartObj in ShoppingCartList)
+            {
+                Product prodTemp = _prodRepo.FirstOrDefault(u => u.Id == cartObj.ProductId);
+                prodTemp.TempQuantity = cartObj.Quantity;
+                ProductUserVM.ProductList.Add(prodTemp);
+            }
 
             return View(ProductUserVM);
         }
@@ -183,6 +226,22 @@ namespace KokosInternetStore.Controllers
             ShoppingCartList.Remove(ShoppingCartList.FirstOrDefault(u => u.ProductId == id));
             HttpContext.Session.Set(WebConstants.SessionCart, ShoppingCartList);
             TempData[WebConstants.Success] = "Товар удален из корзины";
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateCart(IEnumerable<Product> prodList)
+        {
+            List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
+            foreach (Product prod  in prodList)
+            {
+                shoppingCartList.Add(new ShoppingCart { ProductId = prod.Id, Quantity = prod.TempQuantity });
+            }
+
+            HttpContext.Session.Set(WebConstants.SessionCart, shoppingCartList);
+            TempData[WebConstants.Success] = "Корзина успешно обновлена";
 
             return RedirectToAction(nameof(Index));
         }
