@@ -26,6 +26,8 @@ namespace KokosInternetStore.Controllers
         private readonly IInquiryDetailRepository _inqDRepo;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IEmailSender _emailSender;
+        private readonly IOrderHeaderRepository _orderHRepo;
+        private readonly IOrderDetailRepository _orderDRepo;
 
         [BindProperty]
         public ProductUserVM ProductUserVM { get; set; }
@@ -34,6 +36,8 @@ namespace KokosInternetStore.Controllers
             IApplicationUserRepository userRepo,
             IInquiryHeaderRepository inqHRepo,
             IInquiryDetailRepository inqDRepo,
+            IOrderHeaderRepository orderHRepo,
+            IOrderDetailRepository orderDRepo,
             IWebHostEnvironment webHostEnvironment,
             IEmailSender emailSender)
         {
@@ -43,6 +47,8 @@ namespace KokosInternetStore.Controllers
             _userRepo = userRepo;
             _inqHRepo = inqHRepo;
             _inqDRepo = inqDRepo;
+            _orderHRepo = orderHRepo;
+            _orderDRepo = orderDRepo;
         }
 
         public IActionResult Index()
@@ -154,63 +160,104 @@ namespace KokosInternetStore.Controllers
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
-            var pathToTemplate = _webHostEnvironment.WebRootPath + Path.DirectorySeparatorChar.ToString()
+
+            if (User.IsInRole(WebConstants.AdminRole))
+            {
+                // необходимо создать заказ (order)
+
+                OrderHeader orderHeader = new OrderHeader()
+                {
+                    CreatedByUserId = claim.Value,
+                    FinalOrderTotal = ProductUserVM.ProductList.Sum(x => x.Price*x.TempQuantity),
+                    City = ProductUserVM.ApplicationUser.City,
+                    StreetAddress = ProductUserVM.ApplicationUser.StreetAddress,
+                    Region = ProductUserVM.ApplicationUser.Region,
+                    PostalCode = ProductUserVM.ApplicationUser.PostalCode,
+                    FullName = ProductUserVM.ApplicationUser.FullName,
+                    Email = ProductUserVM.ApplicationUser.Email,
+                    PhoneNumber = ProductUserVM.ApplicationUser.PhoneNumber,
+                    OrderDate = DateTime.Now,
+                    OrderStatus = WebConstants.StatusPending
+                };
+                _orderHRepo.Add(orderHeader);
+                _orderHRepo.Save();
+
+                foreach (var prod in ProductUserVM.ProductList)
+                {
+                    OrderDetail orderDetail = new OrderDetail()
+                    {
+                        OrderHeaderId = orderHeader.Id,
+                        PricePerUnit = prod.Price,
+                        Quantity = prod.TempQuantity,
+                        ProductId = prod.Id
+                    };
+                    _orderDRepo.Add(orderDetail);
+                }
+                _orderDRepo.Save();
+                return RedirectToAction(nameof(InquiryConfirmation), new {id = orderHeader.Id });
+            }
+            else 
+            {
+                // необходимо создать запрос (inquiry)
+
+                var pathToTemplate = _webHostEnvironment.WebRootPath + Path.DirectorySeparatorChar.ToString()
                 + "templates" + Path.DirectorySeparatorChar.ToString()
                 + "Inquiry.html";
 
-            var subject = "Новый заказ";
-            string HtmlBody = "";
-            using (StreamReader sr = System.IO.File.OpenText(pathToTemplate))
-            {
-                HtmlBody = sr.ReadToEnd();
-            }
-
-            StringBuilder productListSB = new StringBuilder();
-            foreach (var prod in ProductUserVM.ProductList)
-            {
-                productListSB.Append($" - Name: { prod.Name} <span style='font-size:14px;'> (ID: {prod.Id})</span><br />");
-            }
-
-            string messageBody = string.Format(HtmlBody,
-                ProductUserVM.ApplicationUser.FullName,
-                ProductUserVM.ApplicationUser.Email,
-                ProductUserVM.ApplicationUser.PhoneNumber,
-                productListSB.ToString());
-
-            await _emailSender.SendEmailAsync(WebConstants.EmailAdmin, subject, messageBody);
-
-            InquiryHeader inquiryHeader = new InquiryHeader()
-            {
-                ApplicationUserId = claim.Value,
-                FullName = ProductUserVM.ApplicationUser.FullName,
-                Email = ProductUserVM.ApplicationUser.Email,
-                PhoneNumber = ProductUserVM.ApplicationUser.PhoneNumber,
-                InquiryDate = DateTime.Now
-            };
-
-            _inqHRepo.Add(inquiryHeader);
-            _inqHRepo.Save();
-
-            foreach (var prod in ProductUserVM.ProductList)
-            {
-                InquiryDetail inquiryDetail = new InquiryDetail()
+                var subject = "Новый заказ";
+                string HtmlBody = "";
+                using (StreamReader sr = System.IO.File.OpenText(pathToTemplate))
                 {
-                    InquiryHeaderId = inquiryHeader.Id,
-                    ProductId = prod.Id
+                    HtmlBody = sr.ReadToEnd();
+                }
+
+                StringBuilder productListSB = new StringBuilder();
+                foreach (var prod in ProductUserVM.ProductList)
+                {
+                    productListSB.Append($" - Name: { prod.Name} <span style='font-size:14px;'> (ID: {prod.Id})</span><br />");
+                }
+
+                string messageBody = string.Format(HtmlBody,
+                    ProductUserVM.ApplicationUser.FullName,
+                    ProductUserVM.ApplicationUser.Email,
+                    ProductUserVM.ApplicationUser.PhoneNumber,
+                    productListSB.ToString());
+
+                await _emailSender.SendEmailAsync(WebConstants.EmailAdmin, subject, messageBody);
+
+                InquiryHeader inquiryHeader = new InquiryHeader()
+                {
+                    ApplicationUserId = claim.Value,
+                    FullName = ProductUserVM.ApplicationUser.FullName,
+                    Email = ProductUserVM.ApplicationUser.Email,
+                    PhoneNumber = ProductUserVM.ApplicationUser.PhoneNumber,
+                    InquiryDate = DateTime.Now
                 };
-                _inqDRepo.Add(inquiryDetail);
-            }
-            _inqDRepo.Save();
-            TempData[WebConstants.Success] = "Заказ успешно создан";
+
+                _inqHRepo.Add(inquiryHeader);
+                _inqHRepo.Save();
+
+                foreach (var prod in ProductUserVM.ProductList)
+                {
+                    InquiryDetail inquiryDetail = new InquiryDetail()
+                    {
+                        InquiryHeaderId = inquiryHeader.Id,
+                        ProductId = prod.Id
+                    };
+                    _inqDRepo.Add(inquiryDetail);
+                }
+                _inqDRepo.Save();
+                TempData[WebConstants.Success] = "Заказ успешно создан";
+            }            
 
             return RedirectToAction(nameof(InquiryConfirmation));
         }
 
-        public IActionResult InquiryConfirmation()
+        public IActionResult InquiryConfirmation(int id = 0)
         {
+            OrderHeader orderHeader = _orderHRepo.FirstOrDefault(u => u.Id == id);
             HttpContext.Session.Clear();
-
-            return View();
+            return View(orderHeader);
         }
 
         public IActionResult Remove(int id)

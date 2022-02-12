@@ -19,5 +19,30 @@ namespace Kokos_Utility
         public const string ApplicationTypeName = "ApplicationType";
         public const string Success = "Success";
         public const string Error = "Error";
+
+        /// <summary>
+        /// в ожидании
+        /// </summary>
+        public const string StatusPending = "Pending";
+        /// <summary>
+        /// Одобренный
+        /// </summary>
+        public const string StatusApproved = "Approved";    
+        /// <summary>
+        /// в обработке
+        /// </summary>
+        public const string StatusInProcess = "Processing"; 
+        /// <summary>
+        /// отправлен
+        /// </summary>
+        public const string StatusShipped = "Shipped";     
+        /// <summary>
+        /// отменен
+        /// </summary>
+        public const string StatusCancelled = "Cancelled";  
+        /// <summary>
+        /// возмещено (возвращены средства)
+        /// </summary>
+        public const string StatusRefunded = "Refunded";   
     }
 }

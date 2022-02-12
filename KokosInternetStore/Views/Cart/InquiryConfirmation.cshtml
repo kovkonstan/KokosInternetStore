@@ -1,7 +1,17 @@
-﻿<div class="text-center">
-    <h1 class="text-info">Подтверждение запроса</h1>
+﻿@model Kokos_Models.OrderHeader
 
-    <p> Мы получили Ваш запрос и скоро свяжемся с Вами! </p>
+<div class="text-center">
+    @if (true)
+    {
+        <h1 class="text-info">Заказ создан</h1>
+        <p>Заказ #@Model.Id был успешно создан!</p>
+    }
+    else
+    {
+        <h1 class="text-info">Подтверждение запроса</h1>
+
+        <p> Мы получили Ваш запрос и скоро свяжемся с Вами! </p>
+    }
 
     <img src="~/images/patio.jpg" width="80%" />
 </div>

@@ -97,19 +97,22 @@
                                         <span class="text-info">Сведения о заказе:</span>
                                     </h4>
                                     <ul class="list-group mb-3">
-                                        
+
                                         @{var orderTotal = 0.0; }
 
                                         @for (int i = 0; i < Model.ProductList.Count(); i++)
                                         {
                                             <input type="hidden" asp-for="@Model.ProductList[i].Id" />
                                             <input type="hidden" asp-for="@Model.ProductList[i].Name" />
+                                            <input type="hidden" asp-for="@Model.ProductList[i].Price" />
+                                            <input type="hidden" asp-for="@Model.ProductList[i].TempQuantity" />
+
                                             <li class="list-group-item d-flex justify-content-between">
                                                 <div>
                                                     <h6 class="my-0">@Model.ProductList[i].Name</h6>
                                                     @if (User.IsInRole(Kokos_Utility.WebConstants.AdminRole))
                                                     {
-                                                        <small class="text-muted">Цена: @Model.ProductList[i].Price.ToString("c") | </small>                                                        
+                                                        <small class="text-muted">Цена: @Model.ProductList[i].Price.ToString("c") | </small>
                                                         <small class="text-muted">Количество: @Model.ProductList[i].TempQuantity шт.</small>
                                                     }
                                                     else
@@ -120,8 +123,8 @@
                                                 </div>
                                                 @if (User.IsInRole(Kokos_Utility.WebConstants.AdminRole))
                                                 {
-                                                    <span class="text-muted" >
-                                                        @(String.Format("{0:c}", 
+                                                    <span class="text-muted">
+                                                        @(String.Format("{0:c}",
                                                             Model.ProductList[i].Price * Model.ProductList[i].TempQuantity))
                                                     </span>
                                                 }
