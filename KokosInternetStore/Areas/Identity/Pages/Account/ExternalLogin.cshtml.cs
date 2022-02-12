@@ -6,6 +6,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Kokos_Models;
+using Kokos_Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -48,9 +50,15 @@ namespace KokosInternetStore.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Обязательное поле")]
             [EmailAddress]
             public string Email { get; set; }
+
+            [Required(ErrorMessage = "Обязательное поле")]
+            public string FullName { get; set; }
+
+            [Required(ErrorMessage = "Обязательное поле")]
+            public string PhoneNumber { get; set; }
         }
 
         public IActionResult OnGetAsync()
@@ -101,7 +109,8 @@ namespace KokosInternetStore.Areas.Identity.Pages.Account
                 {
                     Input = new InputModel
                     {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                        Email = info.Principal.FindFirstValue(ClaimTypes.Email),
+                        FullName = info.Principal.FindFirstValue(ClaimTypes.Name)
                     };
                 }
                 return Page();
@@ -121,7 +130,7 @@ namespace KokosInternetStore.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FullName= Input.FullName, PhoneNumber = Input.PhoneNumber };
 
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -129,6 +138,7 @@ namespace KokosInternetStore.Areas.Identity.Pages.Account
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
+                        await _userManager.AddToRoleAsync(user, WebConstants.CustomerRole);
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
 
                         var userId = await _userManager.GetUserIdAsync(user);

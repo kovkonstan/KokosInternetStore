@@ -56,6 +56,12 @@ namespace KokosInternetStore
             services.AddScoped<IOrderHeaderRepository, OrderHeaderRepository>();
             services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 
+            services.AddAuthentication().AddFacebook(Options =>
+            {
+                Options.AppId = "1370652466726264";
+                Options.AppSecret = "630520df3abec3465f1d344c86fbc20f";
+            });
+
             services.AddControllersWithViews();
         }
 

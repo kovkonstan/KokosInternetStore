@@ -66,7 +66,10 @@ namespace KokosInternetStore.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "Введенные пароли не совпадают")]
             public string ConfirmPassword { get; set; }
 
+            [Required(ErrorMessage = "Обязательное поле")]
             public string FullName { get; set; }
+
+            [Required(ErrorMessage = "Обязательное поле")]
             public string PhoneNumber { get; set; }
         }
 
