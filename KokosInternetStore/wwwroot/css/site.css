@@ -217,8 +217,8 @@ body {
 }
 
 .facebook-btn {
-    background-color: #3C589C;
-    color: white;
+    background-color: #3C589C !important;
+    color: white !important;
 }
 
 
