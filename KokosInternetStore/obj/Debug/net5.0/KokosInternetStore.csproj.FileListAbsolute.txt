@@ -1005,3 +1005,4 @@ C:\Users\Администратор\source\repos\KokosInternetStore\KokosInterne
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Shared\_Notifications.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Braintree.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\System.Xml.XPath.XmlDocument.dll
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
