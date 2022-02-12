@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ogEF6wyCphDmGiqBU3uLjFxKzr7cw9keU8yHNuMXFdoNTrT9ZxAlDfMmwNXRj9klMfr7KJ1yS3TjZXBxNphTuA==",
+  "dgSpecHash": "oQXJ5jcSVA+++AcPR2gcYulj/DaTxHjPun5c3EdwmsLZ+aubW++A3/P03KKAHgYXvis1TrCfKv9sicUAXgJt9Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Администратор\\source\\repos\\KokosInternetStore\\KokosInternetStore\\KokosInternetStore.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\5.0.0\\microsoft.aspnetcore.authentication.facebook.5.0.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
     "C:\\Users\\Администратор\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.12\\microsoft.aspnetcore.cryptography.internal.5.0.12.nupkg.sha512",

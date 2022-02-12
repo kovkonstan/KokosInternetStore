@@ -1,10 +1,13 @@
-﻿using Kokos_DataAccess.Data;
+﻿using Braintree;
+using Kokos_DataAccess.Data;
 using Kokos_DataAccess.Repository.IRepository;
 using Kokos_Models;
 using Kokos_Models.ViewModels;
 using Kokos_Utility;
+using Kokos_Utility.BrainTree;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -28,6 +31,7 @@ namespace KokosInternetStore.Controllers
         private readonly IEmailSender _emailSender;
         private readonly IOrderHeaderRepository _orderHRepo;
         private readonly IOrderDetailRepository _orderDRepo;
+        private readonly IBrainTreeGate _brain;
 
         [BindProperty]
         public ProductUserVM ProductUserVM { get; set; }
@@ -39,7 +43,8 @@ namespace KokosInternetStore.Controllers
             IOrderHeaderRepository orderHRepo,
             IOrderDetailRepository orderDRepo,
             IWebHostEnvironment webHostEnvironment,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IBrainTreeGate brainTreeGate)
         {
             _emailSender = emailSender;
             _webHostEnvironment = webHostEnvironment;
@@ -49,6 +54,7 @@ namespace KokosInternetStore.Controllers
             _inqDRepo = inqDRepo;
             _orderHRepo = orderHRepo;
             _orderDRepo = orderDRepo;
+            _brain = brainTreeGate;
         }
 
         public IActionResult Index()
@@ -114,6 +120,10 @@ namespace KokosInternetStore.Controllers
                 {
                     applicationUser = new ApplicationUser();
                 }
+
+                var gateway = _brain.GetGateway();
+                var clientToken = gateway.ClientToken.Generate();
+                ViewBag.ClientToken = clientToken;
             }
             else
             {
@@ -155,8 +165,9 @@ namespace KokosInternetStore.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Summary")]
-        public async Task<IActionResult> SummaryPost(ProductUserVM ProductUserVM)
+        public async Task<IActionResult> SummaryPost(IFormCollection collection, ProductUserVM ProductUserVM)
         {
+
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
@@ -189,11 +200,40 @@ namespace KokosInternetStore.Controllers
                         OrderHeaderId = orderHeader.Id,
                         PricePerUnit = prod.Price,
                         Quantity = prod.TempQuantity,
-                        ProductId = prod.Id
+                        ProductId = prod.Id                        
                     };
                     _orderDRepo.Add(orderDetail);
                 }
                 _orderDRepo.Save();
+
+                string nonceFromTheClient = collection["payment_method_nonce"];
+
+                var request = new TransactionRequest
+                {
+                    Amount = Convert.ToDecimal(orderHeader.FinalOrderTotal),
+                    PaymentMethodNonce = nonceFromTheClient,
+                    OrderId = orderHeader.Id.ToString(),
+                    
+                    Options = new TransactionOptionsRequest
+                    {
+                        SubmitForSettlement = true
+                    }
+                };
+
+                var gateway = _brain.GetGateway();
+                Result<Transaction> result = gateway.Transaction.Sale(request);
+
+                if (result.Target.ProcessorResponseText == "Approved")
+                {
+                    orderHeader.TransactionId = result.Target.Id;
+                    orderHeader.OrderStatus = WebConstants.StatusApproved;
+                }
+                else
+                {
+                    orderHeader.OrderStatus = WebConstants.StatusCancelled;
+                }
+
+                _orderHRepo.Save();
                 return RedirectToAction(nameof(InquiryConfirmation), new {id = orderHeader.Id });
             }
             else 
@@ -275,6 +315,14 @@ namespace KokosInternetStore.Controllers
             TempData[WebConstants.Success] = "Товар удален из корзины";
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Clear()
+        {
+            HttpContext.Session.Clear();
+            TempData[WebConstants.Success] = "Ваша корзина очищена";
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]

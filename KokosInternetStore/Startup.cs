@@ -2,6 +2,7 @@ using Kokos_DataAccess.Data;
 using Kokos_DataAccess.Repository;
 using Kokos_DataAccess.Repository.IRepository;
 using Kokos_Utility;
+using Kokos_Utility.BrainTree;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,6 +44,9 @@ namespace KokosInternetStore
                 options.Cookie.HttpOnly = true; // 
                 options.Cookie.IsEssential = true;
             });
+
+            services.Configure<BrainTreeSettings>(Configuration.GetSection("BrainTree"));
+            services.AddSingleton<IBrainTreeGate, BrainTreeGate>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IApplicationTypeRepository, ApplicationTypeRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
