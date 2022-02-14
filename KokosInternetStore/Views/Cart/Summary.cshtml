@@ -11,7 +11,7 @@
                         Сведения о заказе
                     </div>
                     <div class="col-6 text-right">
-                        <a class="btn btn-outline-info btn-sm">Назад к корзине</a>
+                        <a asp-action="Index" class="btn btn-outline-info btn-sm">Назад к корзине</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -29,7 +29,6 @@
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="ApplicationUser.FullName" type="text" class="form-control" />
-                                        <span asp-validation-for="ApplicationUser.FullName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row my-1">
@@ -38,7 +37,6 @@
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="ApplicationUser.PhoneNumber" required type="text" class="form-control" />
-                                        <span asp-validation-for="ApplicationUser.PhoneNumber" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row my-1">
@@ -47,7 +45,6 @@
                                     </div>
                                     <div class="col-9">
                                         <input asp-for="ApplicationUser.Email" required type="text" class="form-control" />
-                                        <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
                                     </div>
                                 </div>
                                 @if (User.IsInRole(Kokos_Utility.WebConstants.AdminRole))
@@ -58,7 +55,6 @@
                                         </div>
                                         <div class="col-9">
                                             <input asp-for="ApplicationUser.StreetAddress" type="text" class="form-control" />
-                                            <span asp-validation-for="ApplicationUser.StreetAddress" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="row my-1">
@@ -67,7 +63,6 @@
                                         </div>
                                         <div class="col-9">
                                             <input asp-for="ApplicationUser.City" type="text" class="form-control" />
-                                            <span asp-validation-for="ApplicationUser.City" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="row my-1">
@@ -76,7 +71,6 @@
                                         </div>
                                         <div class="col-9">
                                             <input asp-for="ApplicationUser.Region" type="text" class="form-control" />
-                                            <span asp-validation-for="ApplicationUser.Region" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="row my-1">
@@ -85,7 +79,6 @@
                                         </div>
                                         <div class="col-9">
                                             <input asp-for="ApplicationUser.PostalCode" type="text" class="form-control" />
-                                            <span asp-validation-for="ApplicationUser.PostalCode" class="text-danger"></span>
                                         </div>
                                     </div>
 
@@ -162,11 +155,11 @@
                         <div class="col-12 col-md-5 offset-md-7">
                             @if (User.IsInRole(Kokos_Utility.WebConstants.AdminRole))
                             {
-                                <button id="submit-button" class="btn btn-success form-control">Создать заказ</button>
+                                <button id="submit-button" onclick="return validateInput()" class="btn btn-success form-control">Создать заказ</button>
                             }
                             else
                             {
-                                <button type="submit" class="btn btn-primary form-control">Отправить запрос</button>
+                                <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Отправить запрос</button>
                             }
                         </div>
                     </div>
@@ -198,6 +191,40 @@
             });
 
         });
+
+        function validateInput() {
+            var app_name = document.getElementById("ApplicationUser_FullName").value;
+            var app_phone = document.getElementById("ApplicationUser_PhoneNumber").value;
+            var app_email = document.getElementById("ApplicationUser_Email").value;
+
+            if (app_name.toString() == '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Внимание!',
+                    text: 'Пожалуйста, введите имя!'
+                })
+                return false;
+            }
+
+            if (app_phone.toString() == '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Внимание!',
+                    text: 'Пожалуйста, введите телефонный номер!'
+                })
+                return false;
+            }
+
+            if (app_email.toString() == '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Внимание!',
+                    text: 'Пожалуйста, введите email!'
+                })
+                return false;
+            }
+            return true;
+        }
 
     </script>
 }

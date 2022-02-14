@@ -787,8 +787,10 @@ C:\Users\Администратор\source\repos\KokosInternetStore\KokosInterne
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\refs\WindowsBase.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\KokosInternetStore.Views.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\KokosInternetStore.Views.pdb
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Braintree.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Humanizer.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Mailjet.Client.dll
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -831,6 +833,8 @@ C:\Users\Администратор\source\repos\KokosInternetStore\KokosInterne
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Syncfusion.EJ2.dll
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Syncfusion.Licensing.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\System.Composition.AttributedModel.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\System.Composition.Convention.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\System.Composition.Hosting.dll
@@ -841,6 +845,7 @@ C:\Users\Администратор\source\repos\KokosInternetStore\KokosInterne
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\System.Runtime.Caching.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\System.Xml.XPath.XmlDocument.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -982,6 +987,9 @@ C:\Users\Администратор\source\repos\KokosInternetStore\KokosInterne
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Inquiry\Details.cshtml.g.cs
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Inquiry\Index.cshtml.g.cs
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Order\Index.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Product\Delete.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Product\Upsert.cshtml.g.cs
@@ -989,6 +997,7 @@ C:\Users\Администратор\source\repos\KokosInternetStore\KokosInterne
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Shared\_IndividualProductCard.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Shared\_Notifications.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
@@ -1000,12 +1009,4 @@ C:\Users\Администратор\source\repos\KokosInternetStore\KokosInterne
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\ref\KokosInternetStore.dll
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\KokosInternetStore.pdb
 C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\KokosInternetStore.genruntimeconfig.cache
-C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Inquiry\Index.cshtml.g.cs
-C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Inquiry\Details.cshtml.g.cs
-C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Shared\_Notifications.cshtml.g.cs
-C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Braintree.dll
-C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\System.Xml.XPath.XmlDocument.dll
-C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll
-C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Syncfusion.EJ2.dll
-C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\bin\Debug\net5.0\Syncfusion.Licensing.dll
-C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Order\Index.cshtml.g.cs
+C:\Users\Администратор\source\repos\KokosInternetStore\KokosInternetStore\obj\Debug\net5.0\Razor\Views\Order\Details.cshtml.g.cs

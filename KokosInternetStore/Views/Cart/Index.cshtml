@@ -54,10 +54,10 @@
                             </div>
 
                             <hr />
-                            @{ 
+                            @{
                                 var orderTotal = 0.0;
                             }
-                            @for(int i = 0; i < Model.Count(); i++)
+                            @for (int i = 0; i < Model.Count(); i++)
                             {
                                 <input type="hidden" asp-for="@Model[i].Id" />
                                 <div class="row h-100">
@@ -87,10 +87,11 @@
                                     {
                                         <div class="col-4 col-lg-2 pt-lg-4" style="font-size:11px;">
                                             <input type="text" asp-for="@Model[i].TempQuantity" class="form-control" />
+                                            <span asp-validation-for="@Model[i].TempQuantity" class="text-danger"></span>
+
                                         </div>
                                         <div class="col-3 col-lg-2 pt-lg-4" style="font-size:11px;">
                                             <span style="font-size:17px;"> @((Model[i].Price* Model[i].TempQuantity).ToString("c"))</span>
-
                                         </div>
 
                                     }
@@ -118,7 +119,7 @@
                                     @if (User.IsInRole(WebConstants.AdminRole))
                                     {
                                         <input type="submit" asp-action="UpdateCart" formmethod="post"
-                                               name="Update" value="Обновить корзину" 
+                                               name="Update" value="Обновить корзину"
                                                class="btn btn-info form-control">
                                         </input>
                                     }
@@ -142,3 +143,7 @@
         </div>
     </div>
 </form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

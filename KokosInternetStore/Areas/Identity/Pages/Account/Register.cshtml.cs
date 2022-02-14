@@ -125,15 +125,16 @@ namespace KokosInternetStore.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        if (!User.IsInRole(WebConstants.AdminRole))
+                        if (User.IsInRole(WebConstants.AdminRole))
                         {
-                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            TempData[WebConstants.Success] = "Пользователь " + user.FullName + " успешно зарегистрирован";
+                            return RedirectToAction("Index", "Home");
                         }
                         else
                         {
-                            return RedirectToAction("Index");
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            return LocalRedirect(returnUrl);
                         }
-                        return LocalRedirect(returnUrl);
                     }
                 }
                 foreach (var error in result.Errors)
