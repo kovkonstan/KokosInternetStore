@@ -1,4 +1,5 @@
 using Kokos_DataAccess.Data;
+using Kokos_DataAccess.Initializer;
 using Kokos_DataAccess.Repository;
 using Kokos_DataAccess.Repository.IRepository;
 using Kokos_Utility;
@@ -55,7 +56,7 @@ namespace KokosInternetStore
             services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddScoped<IOrderHeaderRepository, OrderHeaderRepository>();
             services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
-
+            services.AddScoped<IDbInitializer, DbInitializer>();
             services.AddAuthentication().AddFacebook(Options =>
             {
                 Options.AppId = "1370652466726264";
@@ -66,7 +67,7 @@ namespace KokosInternetStore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -83,8 +84,8 @@ namespace KokosInternetStore
 
             app.UseRouting();
             app.UseAuthentication();
-
             app.UseAuthorization();
+            dbInitializer.Initialize();
             app.UseSession();
 
             app.UseEndpoints(endpoints =>

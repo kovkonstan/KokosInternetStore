@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Этот файл используется процессом публикации или упаковки вашего веб-проекта. Можно настроить поведение этого процесса,
+изменив этот файл MSBuild. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7gPN7zespUuGxQ2l+Yd8hAAAAAACAAAAAAAQZgAAAAEAACAAAACJsY0Mz3ncJbKQiX4NMXrzO5iZGQuayzcBb3fvjzkF/wAAAAAOgAAAAAIAACAAAAAWdgevhDyMm6kPvFivTV5wPieqroqKRiB2FRyckfIxOIAAAACKf1XmAqSNL+hgEpbqxIxEPNS2CXbohh6kuG6Ggx4Vo7/txPAvyvTGVk3Zawxx7VQYGlQe704xbeUWEeA7F7dd1gvnxbNqMIF3cYU2WkgvP9vl7vw2h44rUc279EEndetzNOySFqW8C5HCh/3mC5U/zfSUcziOTxFKUogyCutIe0AAAAD9TYvF7W7mUH/bDIpUkfILorRoX1r6/WBo4psmVzl88/Ckn+xzw7QGGutOZUXDEun1IQ8FDac7l2C2syi4NPTt</EncryptedPassword>
+    <History>True|2022-02-14T20:59:07.1387790Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:kokos2.database.windows.net,1433%3bInitial Catalog=KokosInternetStore2_db%3bUser Id=adminuser%40kokos2%3bPassword=Admin123%2a</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
